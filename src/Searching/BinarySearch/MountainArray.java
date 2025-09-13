@@ -2,10 +2,12 @@ package Searching.BinarySearch;
 
 public class MountainArray {
     public static void main(String[] args) {
+        int[] arr = {1, 2, 1, 3, 5, 6, 4};
+        System.out.println(peakIndexInMountainArray(arr));
 
     }
 
-    public int peakIndexInMountainArray(int[] arr) {
+    public static int peakIndexInMountainArray(int[] arr) {
         int start = 0;
         int end = arr.length - 1;
 
