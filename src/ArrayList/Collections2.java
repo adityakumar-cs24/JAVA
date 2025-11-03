@@ -8,6 +8,7 @@ public class Collections2 {
         marks.add(80);
         marks.add(44);
         System.out.println(marks);
+        System.out.println(marks.get(1));
 
     }
 }
