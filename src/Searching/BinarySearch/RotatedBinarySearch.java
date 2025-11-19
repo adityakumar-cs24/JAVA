@@ -7,28 +7,51 @@ public class RotatedBinarySearch {
 
     }
 
-    static int search(int[] nums, int target) {
-        int pivot = findPivot(nums);
+    static int search(int[] arr, int target){
+        int pivot = findPivot(arr);
 
-        // if you did not find any pivot it means array is not rotated
-        if(pivot == -1) {
-            return binarySearch(nums, target, 0, nums.length - 1);
+        // if you did not find a pivot, it means the array is not rotated
+        // then doo normal binary search
+        if(pivot == -1){
+            return binarySearch(arr, target, 0, arr.length - 1);
         }
 
-        // if pivot is found , you have found 2 asc sorted array
-        if(nums[pivot] == target) {
+        // if pivot is found , you have found 2 asc sorted arrays
+        if(arr[pivot] == target){
             return pivot;
         }
-
-        if(target >= nums[0]) {
-            return binarySearch(nums, target, 0, pivot - 1);
+        if(target >= arr[0]){
+            return binarySearch(arr, target, 0, pivot - 1);
         }
+        return binarySearch(arr, target, pivot + 1, arr.length - 1);
+    }
 
-        return binarySearch(nums, target, pivot + 1, nums.length - 1);
+    static int findPivot(int[] arr){
+        int start = 0;
+        int end = arr.length - 1;
+
+        while(start <= end){
+            int mid = start + (end - start) / 2;
+            // 4 case over here
+
+            if(mid < end && arr[mid] > arr[mid + 1]){ // to avoid index out of bound error
+                // if our mid is last index then it will be checking for mid+1 that is error to avoid this use mid < end
+                return mid;
+            }
+            if(mid > start && arr[mid] < arr[mid - 1]){
+                return mid - 1;
+            }
+            if(arr[mid] <= arr[start]){
+                end = mid - 1;
+            }
+            else{
+                start = mid + 1;
+            }
+        }
+        return -1;
     }
 
     static int binarySearch (int[] arr, int target, int start, int end) {
-
 
         while(start <= end) {
 //            find the middle element
@@ -43,29 +66,6 @@ public class RotatedBinarySearch {
             }
             else {
                 return mid;
-            }
-        }
-        return -1;
-    }
-
-    static int findPivot(int[] arr) {
-        int start = 0;
-        int end = arr.length - 1;
-
-        while(start <= end) {
-            int mid = start + (end - start) / 2;
-            // 4 cases over here
-            if(mid < end && arr[mid] > arr[mid + 1]) {
-                return mid;
-            }
-            if(mid > start && arr[mid] < arr[mid - 1]) {
-                return mid - 1;
-            }
-            if(arr[mid] <= arr[start]) {
-                end = mid - 1;
-            }
-            else {
-                start = mid + 1;
             }
         }
         return -1;
