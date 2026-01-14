@@ -32,17 +32,23 @@ public class ThirdMax {
                 thirdmax = arr[i];
             }
         }
-        if(secondmax == Integer.MIN_VALUE && thirdmax == Integer.MIN_VALUE){
-            System.out.println("There is no second and third largest element.");
-        }
-        else if(thirdmax == Integer.MIN_VALUE){
-            System.out.println("there is no third largest element.");
-        }
-        else{
-            System.out.println("Second Max : " + secondmax);
-            System.out.println("Third Max : " + thirdmax);
+        System.out.println("First Max : " + firstmax);
+        System.out.println("Second Max : " + secondmax);
+        System.out.println("Third Max : " + thirdmax);
 
-        }
+
+//        if(secondmax == Integer.MIN_VALUE && thirdmax == Integer.MIN_VALUE){
+//            System.out.println("There is no second and third largest element.");
+//        }
+//        else if(thirdmax == Integer.MIN_VALUE){
+//            System.out.println("there is no third largest element.");
+//        }
+//        else{
+//            System.out.println("First Max : " + firstmax);
+//            System.out.println("Second Max : " + secondmax);
+//            System.out.println("Third Max : " + thirdmax);
+//
+//        }
     }
 
 }
